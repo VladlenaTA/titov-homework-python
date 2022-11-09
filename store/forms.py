@@ -2,7 +2,6 @@ from django import forms
 
 from .models import Product, Category
 
-
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
@@ -10,6 +9,14 @@ class ProductForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["full_name"].widget.attrs.update(
-            {"class": "form-control mb-2 account-form", "placeholder": "Full Name"}
+        self.fields["title"].widget.attrs.update(
+            {"class": "form-control mb-2 product-form", "placeholder": "title"}
         )
+
+# class ProductForm(forms.ModelForm):
+#     class Meta:
+#         model = Product
+#         fields = ["id"]
+#
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)

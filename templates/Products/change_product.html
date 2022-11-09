@@ -8,19 +8,19 @@
   <h1 class="h3">Изменить продукт</h1>
   <div>Измените название <b>цену</b> и описание продукта</div>
   <hr />
-  <form name="address_form" class="account-form" method="post" enctype="multipart/form-data">
+  <form name="product_prop" class="product-form" method="POST" enctype="multipart/form-data">
     {% if form.errors %}
     <div class="alert alert-primary" role="alert">
       Error: Please try again!
     </div>
     {% endif %}
     {% csrf_token %}
-    <label class="small fw-bold">{{ product.title.label}}</label>
-    {{ product.title }}
-
+    <input class="card-text m-0" name="title" value="{{ product.title }}">
+    <div style="display:inline-flex">
+      <input class="btn btn-danger btn-block py-2 mb-4 mt-4 fw-bold w-100" style="margin-right: 1.5rem!important;" type="button" onclick="location.href='../../delete/{{product.id}}'" value="Удалить" />
     <button class="btn btn-primary btn-block py-2 mb-4 mt-4 fw-bold w-100" type="button" value="Submit" onclick="submitForm()">
-    Add Address
-    </button>
+    Сохранить
+    </button></div>
   </form>
 
 </div>
@@ -28,9 +28,10 @@
 <script>
 
 function submitForm() {
-   var form = document.getElementsByName('address_form')[0];
+   console.log("test0")
+   var form = document.getElementsByName('product_prop')[0];
+   console.log("test1")
    form.submit(); // Submit the form
-   form.reset();  // Reset all form data
    return false; // Prevent page refresh
 }
 </script>
